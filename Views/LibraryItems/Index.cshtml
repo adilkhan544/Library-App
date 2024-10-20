@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Library_App.Models.LibraryItem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<nav class="flex items-center justify-between px-8 my-4">
+    <div>
+       <h1 class="text-xl   "> Library</h1>
+    </div>
+    <div class="space-x-4">
+       <a class="btn btn-primary cursor-pointer rounded-xl" asp-action="#">Your Button</a>
+       <a class="btn btn-primary cursor-pointer rounded-xl" asp-action="Create">Write Your Story Here</a>
+    </div>
+</nav>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookAuther)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookAuther)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

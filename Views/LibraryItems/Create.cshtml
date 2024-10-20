@@ -1,0 +1,54 @@
+﻿@model Library_App.Models.LibraryItem
+
+@{
+	ViewData["Title"] = "Create";
+}
+
+
+<form asp-action="Create" class="flex justify-center items-center flex-col space-y-6">
+	<div class="flex items-center justiy-center space-x-24 mt-24 w-4/5">
+		<div class="space-y-6 w-1/2 flex items-center justify-center flex-col">
+			<img id="UploadImage" src="~/images/profile-user.png" alt="Alternate Text" accept="image/jpeg, image/png, image/jpg" class="w-44 h-44 rounded-full invert grayscale" />
+			<label for="uploadImageButton" class="btn btn-primary w-54">Upload Book Cover</label>
+			<input id="uploadImageButton" class="hidden" type="file" asp-for="ImageFile" />
+		</div>
+
+		<div class="w-1/2 flex items-center justify-center flex-col space-y-4">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group w-full">
+				<label asp-for="BookTitle" class="control-label">Title</label>
+				<input asp-for="BookTitle" class="form-control w-full" />
+				<span asp-validation-for="BookTitle" class="text-danger"></span>
+			</div>
+			<div class="form-group w-full">
+				<label asp-for="BookAuther" class="control-label"></label>
+				<input asp-for="BookAuther" class="form-control" />
+				<span asp-validation-for="BookAuther" class="text-danger"></span>
+			</div>
+			<div class="form-group w-full">
+				<label asp-for="Description" class="control-label"></label>
+				<input asp-for="Description" class="form-control" />
+				<span asp-validation-for="Description" class="text-danger"></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group w-4/5 flex items-center justify-center flex-col 	">
+			<label asp-for="Content" class="control-label pb-6">Craft your Story</label>
+		<input asp-for="Content" class="form-control py-72" />
+			<span asp-validation-for="Content" class="text-danger"></span>
+		</div>
+
+	
+
+</form>
+
+<input type="submit" value="Publish" class="btn btn-primary absolute top-10 right-10 w-36" />
+
+<a class="absolute top-10 left-10" asp-action="Index"><img class="w-6" src="~/images/left-chevron.png" alt="Alternate Text" /></a>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}
